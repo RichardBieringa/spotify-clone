@@ -1,10 +1,15 @@
 import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
-import Image from "next/image";
+
+import Sidebar from "@/components/Sidebar";
 
 const Home: NextPage = () => {
+  const { data } = useSession();
+  console.log(data);
+
   return (
-    <div>
+    <div className="bg-black h-screen overflow-hidden">
       <Head>
         <title>Spotify Clone</title>
         <meta name="description" content="Spotify Clone" />
@@ -12,8 +17,11 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container">
-        <h1>Spotify CloneS</h1>
+        <Sidebar />
+
+        {/* APP */}
       </main>
+      {/* Player */}
     </div>
   );
 };
