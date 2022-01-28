@@ -42,31 +42,27 @@ const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
       <div className="flex w-64 items-center justify-between">
         {/* Button to shuffle songs */}
         <IconWrapper size={20}>
-          <IoShuffleOutline className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IoShuffleOutline />
         </IconWrapper>
 
         {/* Button to go to previous song */}
         <IconWrapper size={20}>
-          <IoPlaySkipBackSharp className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IoPlaySkipBackSharp />
         </IconWrapper>
 
         {/* Larger Play button */}
         <IconWrapper size={45}>
-          {isPlaying ? (
-            <IoPlayCircleSharp className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
-          ) : (
-            <IoPauseCircleSharp className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
-          )}
+          {isPlaying ? <IoPlayCircleSharp /> : <IoPauseCircleSharp />}
         </IconWrapper>
 
         {/* Button to skip song */}
         <IconWrapper size={20}>
-          <IoPlaySkipForwardSharp className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IoPlaySkipForwardSharp />
         </IconWrapper>
 
         {/* Button to activate repeat */}
         <IconWrapper size={20}>
-          <IoRepeatOutline className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IoRepeatOutline />
         </IconWrapper>
       </div>
 

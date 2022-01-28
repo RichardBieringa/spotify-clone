@@ -1,14 +1,12 @@
-import {
-  HiOutlineArrowsExpand,
-  HiOutlineDesktopComputer,
-  HiOutlineMenu,
-  HiOutlineVolumeOff,
-  HiOutlineVolumeUp,
-} from "react-icons/hi";
-
-import { HiOutlineDotsCircleHorizontal, HiOutlineHeart } from "react-icons/hi";
-
 import IconWrapper from "../common/IconWrapper";
+
+import {
+  IoVolumeLowOutline,
+  IoVolumeMuteOutline,
+  IoDesktopOutline,
+  IoReorderFourOutline,
+} from "react-icons/io5";
+import { BsArrowsAngleExpand } from "react-icons/bs";
 
 interface Props {
   volume: number;
@@ -23,16 +21,12 @@ interface Props {
 const RightConsole = ({ volume, muted }: Props) => {
   return (
     <div className="flex h-full w-64 items-center justify-between">
-      <IconWrapper>
-        <HiOutlineMenu className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      <IconWrapper size={25}>
+        <IoReorderFourOutline />
       </IconWrapper>
 
-      <IconWrapper>
-        <HiOutlineMenu className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
-      </IconWrapper>
-
-      <IconWrapper>
-        <HiOutlineDesktopComputer className="h-6 w-6  cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      <IconWrapper size={25}>
+        <IoDesktopOutline />
       </IconWrapper>
 
       <div className="flex items-center justify-center">
@@ -48,18 +42,18 @@ const RightConsole = ({ volume, muted }: Props) => {
 
         {/* ICON */}
         {muted ? (
-          <IconWrapper>
-            <HiOutlineVolumeUp className="ml-2 h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IconWrapper size={25}>
+            <IoVolumeMuteOutline />
           </IconWrapper>
         ) : (
-          <IconWrapper>
-            <HiOutlineVolumeOff className="ml-2 h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          <IconWrapper size={25}>
+            <IoVolumeLowOutline />
           </IconWrapper>
         )}
       </div>
 
-      <IconWrapper>
-        <HiOutlineArrowsExpand className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      <IconWrapper size={15}>
+        <BsArrowsAngleExpand />
       </IconWrapper>
     </div>
   );
