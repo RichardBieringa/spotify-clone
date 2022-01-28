@@ -1,13 +1,13 @@
 import IconWrapper from "@/components/common/IconWrapper";
 
 import {
-  HiOutlineArrowLeft,
-  HiOutlineArrowRight,
-  HiOutlineLightningBolt,
-  HiOutlinePause,
-  HiOutlinePlay,
-  HiOutlineRefresh,
-} from "react-icons/hi";
+  IoRepeatOutline,
+  IoShuffleOutline,
+  IoPlayCircleSharp,
+  IoPauseCircleSharp,
+  IoPlaySkipBackSharp,
+  IoPlaySkipForwardSharp,
+} from "react-icons/io5";
 
 interface Props {
   /** Controls the song shuffle feature. */
@@ -41,32 +41,32 @@ const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
       {/* Music Control Buttons */}
       <div className="flex w-64 items-center justify-between">
         {/* Button to shuffle songs */}
-        <IconWrapper size={30}>
-          <HiOutlineLightningBolt className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        <IconWrapper size={20}>
+          <IoShuffleOutline className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
         </IconWrapper>
 
         {/* Button to go to previous song */}
-        <IconWrapper size={30}>
-          <HiOutlineArrowLeft className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        <IconWrapper size={20}>
+          <IoPlaySkipBackSharp className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
         </IconWrapper>
 
         {/* Larger Play button */}
-        <IconWrapper size={40}>
+        <IconWrapper size={45}>
           {isPlaying ? (
-            <HiOutlinePause className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+            <IoPlayCircleSharp className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
           ) : (
-            <HiOutlinePlay className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+            <IoPauseCircleSharp className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
           )}
         </IconWrapper>
 
         {/* Button to skip song */}
-        <IconWrapper size={30}>
-          <HiOutlineArrowRight className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        <IconWrapper size={20}>
+          <IoPlaySkipForwardSharp className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
         </IconWrapper>
 
         {/* Button to activate repeat */}
-        <IconWrapper size={30}>
-          <HiOutlineRefresh className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        <IconWrapper size={20}>
+          <IoRepeatOutline className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
         </IconWrapper>
       </div>
 
