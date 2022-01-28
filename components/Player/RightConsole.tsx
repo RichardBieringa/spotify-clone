@@ -1,10 +1,14 @@
 import {
-  ArrowsExpandIcon,
-  DesktopComputerIcon,
-  MenuIcon,
-  VolumeOffIcon,
-  VolumeUpIcon,
-} from "@heroicons/react/outline";
+  HiOutlineArrowsExpand,
+  HiOutlineDesktopComputer,
+  HiOutlineMenu,
+  HiOutlineVolumeOff,
+  HiOutlineVolumeUp,
+} from "react-icons/hi";
+
+import { HiOutlineDotsCircleHorizontal, HiOutlineHeart } from "react-icons/hi";
+
+import IconWrapper from "../common/IconWrapper";
 
 interface Props {
   volume: number;
@@ -18,11 +22,20 @@ interface Props {
  */
 const RightConsole = ({ volume, muted }: Props) => {
   return (
-    <div className="h-full w-64 flex justify-between items-center">
-      <MenuIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-      <DesktopComputerIcon className="w-6 h-6  text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+    <div className="flex h-full w-64 items-center justify-between">
+      <IconWrapper>
+        <HiOutlineMenu className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      </IconWrapper>
 
-      <div className="flex justify-center items-center">
+      <IconWrapper>
+        <HiOutlineMenu className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      </IconWrapper>
+
+      <IconWrapper>
+        <HiOutlineDesktopComputer className="h-6 w-6  cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      </IconWrapper>
+
+      <div className="flex items-center justify-center">
         {/* Slider */}
         <input
           type="range"
@@ -30,18 +43,24 @@ const RightConsole = ({ volume, muted }: Props) => {
           max="100"
           step="1"
           // value="80"
-          className="h-1 w-24 p-0 cursor-pointer bg-gray-400 appearance-none rounded-lg  focus:outline-none focus:ring-0 focus:shadow-none"
+          className="h-1 w-24 cursor-pointer appearance-none rounded-lg bg-gray-400 p-0  focus:shadow-none focus:outline-none focus:ring-0"
         />
 
         {/* ICON */}
         {muted ? (
-          <VolumeUpIcon className="w-6 h-6 ml-2 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+          <IconWrapper>
+            <HiOutlineVolumeUp className="ml-2 h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          </IconWrapper>
         ) : (
-          <VolumeOffIcon className="w-6 h-6 ml-2 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+          <IconWrapper>
+            <HiOutlineVolumeOff className="ml-2 h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          </IconWrapper>
         )}
       </div>
 
-      <ArrowsExpandIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+      <IconWrapper>
+        <HiOutlineArrowsExpand className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+      </IconWrapper>
     </div>
   );
 };

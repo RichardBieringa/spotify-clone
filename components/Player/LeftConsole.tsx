@@ -1,4 +1,6 @@
-import { DotsCircleHorizontalIcon, HeartIcon } from "@heroicons/react/outline";
+import { HiOutlineDotsCircleHorizontal, HiOutlineHeart } from "react-icons/hi";
+
+import IconWrapper from "@/components/common/IconWrapper";
 
 interface Props {
   songName: string;
@@ -12,15 +14,20 @@ interface Props {
  */
 const LeftConsole = ({ songName, artist }: Props) => {
   return (
-    <div className="h-full w-48 flex justify-between items-center">
+    <div className="flex h-full w-48 items-center justify-between">
       <div className="flex flex-col">
-        <span className="font-bold text-sm text-white">{songName}</span>
-        <span className="font-bold text-xs text-gray-300">{artist}</span>
+        <span className="text-sm font-bold text-white">{songName}</span>
+        <span className="text-xs font-bold text-gray-300">{artist}</span>
       </div>
 
-      <div className="flex ml-6">
-        <HeartIcon className="w-6 h-6 mx-2 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        <DotsCircleHorizontalIcon className="w-6 h-6 mx-2 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+      <div className="ml-6 flex">
+        <IconWrapper>
+          <HiOutlineHeart />
+        </IconWrapper>
+
+        <IconWrapper>
+          <HiOutlineDotsCircleHorizontal />
+        </IconWrapper>
       </div>
     </div>
   );

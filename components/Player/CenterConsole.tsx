@@ -1,11 +1,13 @@
+import IconWrapper from "@/components/common/IconWrapper";
+
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  LightningBoltIcon,
-  PauseIcon,
-  PlayIcon,
-  RefreshIcon,
-} from "@heroicons/react/outline";
+  HiOutlineArrowLeft,
+  HiOutlineArrowRight,
+  HiOutlineLightningBolt,
+  HiOutlinePause,
+  HiOutlinePlay,
+  HiOutlineRefresh,
+} from "react-icons/hi";
 
 interface Props {
   /** Controls the song shuffle feature. */
@@ -35,32 +37,51 @@ const formatTime = (seconds: number): string => {
  */
 const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
   return (
-    <div className="h-full grow flex flex-col items-center justify-between">
+    <div className="flex h-full grow flex-col items-center justify-between">
       {/* Music Control Buttons */}
-      <div className="w-64 flex items-center justify-between">
-        <LightningBoltIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        <ArrowLeftIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        {isPlaying ? (
-          <PauseIcon className="w-12 h-12 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        ) : (
-          <PlayIcon className="w-12 h-12 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        )}
-        <ArrowRightIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
-        <RefreshIcon className="w-6 h-6 text-gray-400 hover:text-gray-300 hover:scale-110 transition duration-75 cursor-pointer" />
+      <div className="flex w-64 items-center justify-between">
+        {/* Button to shuffle songs */}
+        <IconWrapper size={30}>
+          <HiOutlineLightningBolt className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        </IconWrapper>
+
+        {/* Button to go to previous song */}
+        <IconWrapper size={30}>
+          <HiOutlineArrowLeft className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        </IconWrapper>
+
+        {/* Larger Play button */}
+        <IconWrapper size={40}>
+          {isPlaying ? (
+            <HiOutlinePause className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          ) : (
+            <HiOutlinePlay className="h-12 w-12 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+          )}
+        </IconWrapper>
+
+        {/* Button to skip song */}
+        <IconWrapper size={30}>
+          <HiOutlineArrowRight className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        </IconWrapper>
+
+        {/* Button to activate repeat */}
+        <IconWrapper size={30}>
+          <HiOutlineRefresh className="h-6 w-6 cursor-pointer text-gray-400 transition duration-75 hover:scale-110 hover:text-gray-300" />
+        </IconWrapper>
       </div>
 
       {/* Music Time Controls */}
-      <div className="grow w-full flex justify-between items-center max-w-xs">
-        <span className="text-gray-300 text-xs">{formatTime(currentTime)}</span>
+      <div className="flex w-full max-w-xs grow items-center justify-between">
+        <span className="text-xs text-gray-300">{formatTime(currentTime)}</span>
         <input
           type="range"
           min="1"
           max="100"
           step="1"
           // value="80"
-          className="h-1 grow mx-2 p-0 cursor-pointer bg-gray-400 appearance-none rounded-lg  focus:outline-none focus:ring-0 focus:shadow-none"
+          className="mx-2 h-1 grow cursor-pointer appearance-none rounded-lg bg-gray-400 p-0  focus:shadow-none focus:outline-none focus:ring-0"
         />
-        <span className="text-gray-300 text-xs">
+        <span className="text-xs text-gray-300">
           {formatTime(songDuration)}
         </span>
       </div>
