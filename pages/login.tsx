@@ -19,14 +19,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const LogIn: NextPage<Props> = ({ providers }: Props) => {
   return (
-    <div className="flex items-center justify-center h-screen bg-black overflow-hidden">
-      <div className="relative bg-gray-700 flex flex-col p-8 rounded-xl">
-        <div className="flex justify-center items-center absolute bg-white rounded-full shadow-md -top-12 left-1/2 -translate-x-1/2 scale-9">
+    <div className="flex h-screen items-center justify-center overflow-hidden bg-black">
+      <div className="relative flex flex-col rounded-xl bg-gray-700 p-8">
+        <div className="scale-9 absolute -top-12 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full bg-white shadow-md">
           <Image width="128" height="128" src="/spotify.svg" priority />
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-center">
-          <h1 className="text-white text-xl font-bold my-6">
+          <h1 className="my-6 text-xl font-bold text-white">
             Spotify Clone Demo
           </h1>
 
@@ -34,7 +34,7 @@ const LogIn: NextPage<Props> = ({ providers }: Props) => {
             {Object.values(providers).map((provider) => (
               <div key={provider.name}>
                 <button
-                  className="bg-green-500 hover:bg-green-400 hover:scale-105 transition duration-75 border-green-600 border shadow text-white font-bold p-4 rounded-xl"
+                  className="rounded-xl border border-green-600 bg-green-500 p-4 font-bold text-white shadow transition duration-75 hover:scale-105 hover:bg-green-400"
                   onClick={() => {
                     signIn(provider.id, { callbackUrl: "/" });
                   }}
