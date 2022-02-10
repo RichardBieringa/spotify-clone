@@ -33,15 +33,15 @@ function Sidebar({ playlists }: SidebarProps) {
     useState<SpotifyApi.PlaylistObjectSimplified | null>(null);
 
   return (
-    <div className="mx-4 flex min-h-0 flex-col space-y-2">
+    <div className="flex min-h-0 flex-col space-y-2">
       {/* Logo */}
-      <div className="my-4 flex cursor-pointer items-center text-white hover:text-white">
+      <div className="m-4 flex cursor-pointer items-center text-white hover:text-white">
         <BsSpotify className="h-10 w-10" />
         <span className="mx-2 text-xl font-bold">Spotify</span>
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col">
+      <div className="m-4 flex flex-col">
         <button className="my-2 flex items-center border-gray-900 font-semibold text-gray-400 transition-colors hover:text-white">
           <HomeIcon className="h-8 w-6" />
           <span className="mx-2">Home</span>
@@ -73,7 +73,7 @@ function Sidebar({ playlists }: SidebarProps) {
       <hr className="border-gray-500" />
 
       {/* Playlist */}
-      <ul className="fleg-grow min-h-0 overflow-y-scroll">
+      <ul className="fleg-grow ml-4 mr-1 min-h-0 overflow-y-scroll">
         {playlists.map((playlist) => {
           return (
             <li
