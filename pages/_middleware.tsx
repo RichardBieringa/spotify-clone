@@ -13,8 +13,8 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   // requires type NextApiRequest. This works even though they are not compatible
   const apiRequest = req as unknown as NextApiRequest;
 
-  // Gets the JWT token given the JWT secret
-  const secret = process.env.JWT_SECRET;
+  // Gets the JWT token encrypted with the JWT secret
+  const secret = process.env.JWT_SECRET || "JWT_SECRET";
   const token = await getToken({ req: apiRequest, secret });
 
   const path = req.nextUrl.pathname;
