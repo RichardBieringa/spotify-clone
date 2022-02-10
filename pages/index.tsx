@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   }, [session, spotifyApi]);
 
   return (
-    <div className="">
+    <>
       <Head>
         <title>Spotify Clone</title>
         <meta name="description" content="Spotify Clone" />
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
           <Player />
         </section>
       </main>
-    </div>
+    </>
   );
 };
 

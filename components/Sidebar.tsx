@@ -70,7 +70,7 @@ function Sidebar({ playlists }: SidebarProps) {
         </button>
       </div>
 
-      <hr className="border-gray-500" />
+      <hr className="mx-4 border-gray-500" />
 
       {/* Playlist */}
       <ul className="fleg-grow ml-4 mr-1 min-h-0 overflow-y-scroll">
