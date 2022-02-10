@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -7,9 +8,27 @@ import Main from "@/components/Main";
 import Player from "@/components/Player";
 import Album from "@/components/Album";
 
+import useSpotify from "hooks/useSpotify";
+
+
 const Home: NextPage = () => {
-  const { data } = useSession();
-  console.log(data);
+  const { data: session } = useSession();
+  const spotifyApi = useSpotify()
+
+  const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[]>([])
+
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      spotifyApi.getUserPlaylists().then((data) => {
+        if (data.body.items) {
+          setPlaylists(data.body.items)
+          console.log(data.body.items)
+        }
+
+      })
+    }
+  }, [session, spotifyApi])
+
 
   return (
     <div className="bg-black h-screen overflow-hidden">
