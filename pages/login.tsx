@@ -22,7 +22,13 @@ const LogIn: NextPage<Props> = ({ providers }: Props) => {
     <div className="flex h-screen items-center justify-center overflow-hidden bg-black">
       <div className="relative flex flex-col rounded-xl bg-gray-700 p-8">
         <div className="scale-9 absolute -top-12 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full bg-white shadow-md">
-          <Image width="128" height="128" src="/spotify.svg" priority />
+          <Image
+            alt="spotify logo"
+            width="128"
+            height="128"
+            src="/spotify.svg"
+            priority
+          />
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-center">

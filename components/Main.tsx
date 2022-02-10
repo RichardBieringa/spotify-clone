@@ -1,6 +1,6 @@
 function Center() {
   return (
-    <div className="grow bg-gray-200">
+    <div className="h-full grow bg-gray-400">
       <h1>center component</h1>
     </div>
   );
