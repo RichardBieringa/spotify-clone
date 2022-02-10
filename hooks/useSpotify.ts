@@ -7,7 +7,7 @@ export default function useSpotify() {
 
   useEffect(() => {
     if (session?.access_token) {
-      spotifyClient.setAccessToken(session.access_token as string);
+      spotifyClient.setAccessToken(session.access_token);
     }
   }, [session]);
 

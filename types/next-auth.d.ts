@@ -13,3 +13,13 @@ declare module "next-auth/jwt" {
     token_type?: string;
   }
 }
+
+declare module "next-auth" {
+  /**
+   * Extend the rerpesentation of the Session object in next-auth to include an access token.
+   */
+  interface Session {
+    expires?: string;
+    access_token?: string;
+  }
+}
