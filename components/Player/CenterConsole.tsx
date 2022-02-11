@@ -52,7 +52,7 @@ const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
 
         {/* Larger Play button */}
         <IconWrapper size={45}>
-          {isPlaying ? <IoPlayCircleSharp /> : <IoPauseCircleSharp />}
+          {isPlaying ? <IoPauseCircleSharp /> : <IoPlayCircleSharp />}
         </IconWrapper>
 
         {/* Button to skip song */}
