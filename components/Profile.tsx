@@ -16,10 +16,10 @@ function Profile({ username, profilePicture }: ProfileProps) {
     useComponentVisible(false);
 
   return (
-    <div className="relative">
+    <div className="fixed top-5 right-10 z-10">
       <div
         className="flex cursor-pointer flex-row items-center justify-between rounded-full bg-zinc-800 text-sm font-semibold text-white"
-        onClick={() => setIsComponentVisible(!isComponentVisible)}
+        onClick={() => setIsComponentVisible(true)}
       >
         {/* Image */}
         <div className="m-[0.2] h-8 w-8 overflow-hidden rounded-full border border-solid border-zinc-800 bg-zinc-700">
