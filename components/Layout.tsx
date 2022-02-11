@@ -11,7 +11,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const AppLayout = ({ children, playlists }: Props) => {
+const AppLayout = ({ children, playlists = [] }: Props) => {
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ const AppLayout = ({ children, playlists }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Profile username={undefined} profilePicture={undefined} />
+      <Profile />
       <main className="flex h-screen w-screen flex-col flex-nowrap overflow-hidden bg-black">
         <section className="flex h-full min-h-0 flex-shrink flex-row">
           {/* Navigation */}

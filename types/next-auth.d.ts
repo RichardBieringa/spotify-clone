@@ -21,5 +21,12 @@ declare module "next-auth" {
   interface Session {
     expires?: string;
     access_token?: string;
+    user?: User;
+  }
+
+  interface User {
+    name: string;
+    email: string;
+    image: string;
   }
 }
