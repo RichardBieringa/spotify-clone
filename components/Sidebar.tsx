@@ -1,34 +1,26 @@
+import { useState } from "react";
+
+// Icons used on this component
+import { BsSpotify } from "react-icons/bs";
 import {
   HomeIcon,
   SearchIcon,
   LibraryIcon,
   PlusIcon,
   HeartIcon,
-  LogoutIcon,
 } from "@heroicons/react/outline";
-import { useState } from "react";
-import IconWrapper from "./common/IconWrapper";
-import { BsSpotify } from "react-icons/bs";
 
-interface ButtonProps {
-  type: string;
-  size: number;
-}
-
-function SidebarButton({ type, size }: ButtonProps) {
-  return (
-    <button className="flex items-center space-x-2 border-gray-900 p-4 text-gray-500 hover:text-white">
-      <HomeIcon className="h-6 w-6" />
-      <span>Home</span>
-    </button>
-  );
-}
-
-interface SidebarProps {
+interface Props {
   playlists: SpotifyApi.PlaylistObjectSimplified[];
 }
 
-function Sidebar({ playlists }: SidebarProps) {
+/**
+ * The Sidebar component.
+ *
+ * Contains the navigational buttons of the web app and the
+ * playlists of the user.
+ */
+const Sidebar = ({ playlists }: Props) => {
   const [playlist, setPlaylist] =
     useState<SpotifyApi.PlaylistObjectSimplified | null>(null);
 
@@ -88,6 +80,6 @@ function Sidebar({ playlists }: SidebarProps) {
       </ul>
     </div>
   );
-}
+};
 
 export default Sidebar;
