@@ -20,7 +20,6 @@ export default function useComponentVisible(initialIsVisible: boolean) {
   // Hide component when clicked outside of the ref
   const handleClickOutside = (event: Event) => {
     if (!ref.current?.contains(event.target as Node)) {
-      console.log("out");
       setIsComponentVisible(false);
     }
   };
