@@ -36,7 +36,8 @@ const RightConsole = ({ volume, muted }: Props) => {
           min="1"
           max="100"
           step="1"
-          // value="80"
+          value={volume}
+          readOnly
           className="h-1 w-24 cursor-pointer appearance-none rounded-lg bg-gray-400 p-0  focus:shadow-none focus:outline-none focus:ring-0"
         />
 

@@ -1,4 +1,5 @@
 import IconWrapper from "@/components/common/IconWrapper";
+import useSpotify from "@/hooks/useSpotify";
 
 import {
   IoRepeatOutline,
@@ -31,39 +32,94 @@ const formatTime = (seconds: number): string => {
 };
 
 /**
+ * Represents how far the song is compared to the total duration.
+ *
+ * Max can be changed to change the range from 1-100 (default) to e.g. 1-1000
+ */
+const calcSeekRatio = (
+  current: number | undefined,
+  duration: number | undefined,
+  max: number = 100
+) => {
+  if (!current || !duration) return 0;
+  return Math.round((current / duration) * max);
+};
+
+/**
  * The Center Console in the Player Component.
  *
  * Contains the main song controls.
  */
-const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
+const CenterConsole = ({
+  isPlaying,
+  currentTime,
+  songDuration,
+  shuffle,
+}: Props) => {
+  const spotifyApi = useSpotify();
+
   return (
     <div className="flex h-full grow flex-col items-center justify-between">
       {/* Music Control Buttons */}
       <div className="flex w-64 items-center justify-between">
         {/* Button to shuffle songs */}
-        <IconWrapper size={20}>
-          <IoShuffleOutline />
-        </IconWrapper>
+        <button
+          onClick={() => {
+            spotifyApi.setShuffle(!shuffle).catch(console.error);
+          }}
+        >
+          <IconWrapper size={20}>
+            <IoShuffleOutline />
+          </IconWrapper>
+        </button>
 
         {/* Button to go to previous song */}
-        <IconWrapper size={20}>
-          <IoPlaySkipBackSharp />
-        </IconWrapper>
+        <button
+          onClick={() => {
+            spotifyApi.skipToPrevious().catch(console.error);
+          }}
+        >
+          <IconWrapper size={20}>
+            <IoPlaySkipBackSharp />
+          </IconWrapper>
+        </button>
 
         {/* Larger Play button */}
-        <IconWrapper size={45}>
-          {isPlaying ? <IoPauseCircleSharp /> : <IoPlayCircleSharp />}
-        </IconWrapper>
+        <button
+          onClick={() => {
+            if (isPlaying) {
+              spotifyApi.pause().catch(console.error);
+            } else {
+              spotifyApi.play().catch(console.error);
+            }
+          }}
+        >
+          <IconWrapper size={45}>
+            {isPlaying ? <IoPauseCircleSharp /> : <IoPlayCircleSharp />}
+          </IconWrapper>
+        </button>
 
         {/* Button to skip song */}
-        <IconWrapper size={20}>
-          <IoPlaySkipForwardSharp />
-        </IconWrapper>
+        <button
+          onClick={() => {
+            spotifyApi.skipToNext().catch(console.error);
+          }}
+        >
+          <IconWrapper size={20}>
+            <IoPlaySkipForwardSharp />
+          </IconWrapper>
+        </button>
 
         {/* Button to activate repeat */}
-        <IconWrapper size={20}>
-          <IoRepeatOutline />
-        </IconWrapper>
+        <button
+          onClick={() => {
+            spotifyApi.setRepeat("off").catch(console.error);
+          }}
+        >
+          <IconWrapper size={20}>
+            <IoRepeatOutline />
+          </IconWrapper>
+        </button>
       </div>
 
       {/* Music Time Controls */}
@@ -74,7 +130,8 @@ const CenterConsole = ({ isPlaying, currentTime, songDuration }: Props) => {
           min="1"
           max="100"
           step="1"
-          // value="80"
+          value={calcSeekRatio(currentTime, songDuration)}
+          readOnly
           className="mx-2 h-1 grow cursor-pointer appearance-none rounded-lg bg-gray-400 p-0  focus:shadow-none focus:outline-none focus:ring-0"
         />
         <span className="text-xs text-gray-300">

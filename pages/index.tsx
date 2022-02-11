@@ -17,11 +17,14 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       // Fetch the user's playlists and update them in the state object
-      spotifyApi.getUserPlaylists().then((data) => {
-        if (data.body.items) {
-          setPlaylists(data.body.items);
-        }
-      });
+      spotifyApi
+        .getUserPlaylists()
+        .then((data) => {
+          if (data.body.items) {
+            setPlaylists(data.body.items);
+          }
+        })
+        .catch(console.log);
     }
   }, [session, spotifyApi]);
 

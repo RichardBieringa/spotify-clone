@@ -29,47 +29,50 @@ function Player() {
   const [volumePercent, setVolumePercent] = useState(0);
 
   useEffect(() => {
-    if (spotifyApi.getAccessToken()) {
-      spotifyApi
-        .getMyCurrentPlaybackState()
-        .then(({ body }) => {
-          const {
-            shuffle_state,
-            repeat_state,
-            is_playing,
-            progress_ms,
-            device,
-          } = body;
+    const interval = setInterval(() => {
+      if (spotifyApi.getAccessToken()) {
+        spotifyApi
+          .getMyCurrentPlaybackState()
+          .then(({ body }) => {
+            const {
+              shuffle_state,
+              repeat_state,
+              is_playing,
+              progress_ms,
+              device,
+            } = body;
 
-          // Song state
-          setShuflle(shuffle_state);
-          setRepeat(repeat_state);
-          setPlaying(is_playing);
+            // Song state
+            setShuflle(shuffle_state);
+            setRepeat(repeat_state);
+            setPlaying(is_playing);
 
-          // Playback device state
-          if (device.volume_percent) {
-            setVolumePercent(device.volume_percent);
-          }
-
-          if (body.currently_playing_type === "track") {
-            const currentTrack = body.item as SpotifyApi.TrackObjectFull;
-
-            setTrack(currentTrack.name);
-            setArtist(currentTrack.artists[0].name);
-            setAlbumImageUrl(currentTrack.album.images[0].url);
-
-            // Current time (seek) of the current track
-            if (progress_ms) {
-              setProgress(progress_ms);
+            // Playback device state
+            if (device.volume_percent) {
+              setVolumePercent(device.volume_percent);
             }
-            setDuration(currentTrack.duration_ms);
-          }
-        })
-        .catch(({ status, message }: SpotifyApi.ErrorObject) => {
-          console.error(status);
-          console.error(message);
-        });
-    }
+
+            if (body.currently_playing_type === "track") {
+              const currentTrack = body.item as SpotifyApi.TrackObjectFull;
+
+              setTrack(currentTrack.name);
+              setArtist(currentTrack.artists[0].name);
+              setAlbumImageUrl(currentTrack.album.images[0].url);
+
+              // Current time (seek) of the current track
+              if (progress_ms) {
+                setProgress(progress_ms);
+              }
+              setDuration(currentTrack.duration_ms);
+            }
+          })
+          .catch(({ status, message }: SpotifyApi.ErrorObject) => {
+            console.error(status);
+            console.error(message);
+          });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
   }, [session, spotifyApi]);
 
   return (
