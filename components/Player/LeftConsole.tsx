@@ -1,10 +1,13 @@
-import { HiOutlineDotsCircleHorizontal, HiOutlineHeart } from "react-icons/hi";
+import Image from "next/image";
+import { HiOutlineHeart, HiHeart } from "react-icons/hi";
 
 import IconWrapper from "@/components/common/IconWrapper";
 
 interface Props {
-  songName: string;
-  artist: string;
+  track: string | undefined;
+  artist: string | undefined;
+  albumImageUrl: string | undefined;
+  isFavourite: boolean;
 }
 
 /**
@@ -12,21 +15,23 @@ interface Props {
  *
  * Contains the Song Information of the currently selected song.
  */
-const LeftConsole = ({ songName, artist }: Props) => {
+const LeftConsole = ({ track, artist, albumImageUrl, isFavourite }: Props) => {
   return (
-    <div className="flex h-full w-48 items-center justify-between">
-      <div className="flex flex-col">
-        <span className="text-sm font-bold text-white">{songName}</span>
-        <span className="text-xs font-bold text-gray-300">{artist}</span>
+    <div className="flex h-full w-56 items-center justify-between space-x-4">
+      {albumImageUrl && (
+        <Image src={albumImageUrl} alt="Album image" width={64} height={64} />
+      )}
+
+      <div className="flex grow flex-col">
+        <span className="text-xs font-semibold text-white">{track ?? "-"}</span>
+        <span className="text-xs font-semibold text-gray-300">
+          {artist ?? "--"}
+        </span>
       </div>
 
-      <div className="ml-6 flex">
+      <div className="flex">
         <IconWrapper>
-          <HiOutlineHeart />
-        </IconWrapper>
-
-        <IconWrapper>
-          <HiOutlineDotsCircleHorizontal />
+          {isFavourite ? <HiHeart /> : <HiOutlineHeart />}
         </IconWrapper>
       </div>
     </div>

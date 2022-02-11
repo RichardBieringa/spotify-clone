@@ -9,6 +9,8 @@ const scopes = [
   "user-read-playback-position",
   "user-top-read",
   "user-read-recently-played",
+  "user-modify-playback-state",
+  "user-read-playback-state",
 ].join(",");
 
 const params = {
